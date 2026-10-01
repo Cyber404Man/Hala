@@ -21,7 +21,11 @@ def analyze(text: str) -> dict:
     # فحص الـregex
     for rx in patterns.get("_regex", []):
         if re.search(rx["pattern"], text, re.IGNORECASE):
-            hits.append((rx["name"], f"regex: {rx['pattern'][:40]}...", rx.get("weight", 20)))
+            hits.append((
+                rx["name"],
+                f"regex: {rx['pattern'][:40]}",
+                rx.get("weight", 20),
+            ))
             score += rx.get("weight", 20)
 
     # فحص الكلمات المفتاحية
@@ -53,27 +57,36 @@ def analyze(text: str) -> dict:
 
 
 def verdict_color(v: str) -> str:
+    """لون الحكم."""
     return {"SCAM": "red", "SUSPICIOUS": "yellow", "CLEAN": "green"}[v]
 
 
-def verdict_arabic(v: str) -> str:
+def verdict_bilingual(v: str) -> str:
+    """الحكم بالإنجليزي والعربي معًا."""
     return {
-        "SCAM": "احتيال مؤكد",
-        "SUSPICIOUS": "مشبوه",
-        "CLEAN": "سليم",
+        "SCAM": "SCAM · احتيال مؤكد",
+        "SUSPICIOUS": "SUSPICIOUS · مشبوه",
+        "CLEAN": "CLEAN · سليم",
     }[v]
 
 
 @click.command()
 @click.option("--text", required=True, help="النص للتحليل")
-def nlp(text: str):
+@click.option("--json-out", is_flag=True, help="إخراج JSON")
+def nlp(text: str, json_out: bool):
     """تحليل رسالة عربية - هل هي احتيال؟"""
     result = analyze(text)
+
+    if json_out:
+        import json as _json
+        click.echo(_json.dumps(result, ensure_ascii=False, indent=2))
+        return
+
     color = verdict_color(result["verdict"])
 
     console.print(Panel.fit(
         f"[bold]النص:[/bold]\n{text}\n\n"
-        f"[bold {color}]الحكم: {verdict_arabic(result['verdict'])} "
+        f"[bold {color}]الحكم: {verdict_bilingual(result['verdict'])} "
         f"({result['score']}/100)[/bold {color}]",
         title="[red]HALA · NLP[/red]",
         border_style="red",

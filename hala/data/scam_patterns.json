@@ -3,7 +3,7 @@
     {
       "name": "otp_request",
       "pattern": "(otp|كود|رمز|رمز التحقق|الرقم السري|pin)",
-      "weight": 25
+      "weight": 35
     },
     {
       "name": "money_promise",

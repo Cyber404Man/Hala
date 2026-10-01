@@ -6,9 +6,8 @@
 [![CI](https://github.com/Cyber404Man/Hala/actions/workflows/ci.yml/badge.svg)](https://github.com/Cyber404Man/Hala/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-[![PyPI](https://img.shields.io/badge/pypi-hala--arab-red.svg)](https://pypi.org/project/hala-arab/)
 
-🇸🇦 [اقرأ بالعربي](README.ar.md)
+🇵🇸 [اقرأ بالعربي](README.ar.md)
 
 ---
 
@@ -17,6 +16,7 @@
 Global threat intelligence tools were built for the West. They understand English, monitor Twitter and Reddit, and ignore the platforms Arabic speakers actually use.
 
 Meanwhile, **400+ million Arabic speakers** face:
+
 - Localized phishing in Arabic dialects
 - Phone number leaks from regional telecoms
 - Fake OTP pages targeting Arabic banks
@@ -40,81 +40,113 @@ Meanwhile, **400+ million Arabic speakers** face:
 
 ## Installation
 
+From PyPI (coming soon):
+
 ```bash
 pip install hala-arab
-Or from source:
+```
 
-bash
+From source (works now):
+
+```bash
 git clone https://github.com/Cyber404Man/Hala.git
 cd Hala
+python3 -m venv venv
+source venv/bin/activate
 pip install -e ".[dev]"
-Quick Start
-Check a phone number
-bash
+```
+
+---
+
+## Quick Start
+
+### Check a phone number
+
+```bash
 hala kashif 0599123456 --region PS
 hala kashif +967712345678
 hala kashif 0501234567 --region SA --json-out
-Clean your digital footprint
-bash
+```
+
+### Clean your digital footprint
+
+```bash
 hala sitr
 hala sitr --country PS
 hala sitr --open
-OSINT on a username
-bash
+```
+
+### OSINT on a username
+
+```bash
 hala athar @torvalds
 hala athar @username --only-found
-Find phishing domains for a brand
-bash
+```
+
+### Find phishing domains for a brand
+
+```bash
 hala sayyad --brand jawwal --dialect ps
 hala sayyad --brand "زين" --suspicious-only
-Detect scam messages
-bash
+```
+
+### Detect scam messages
+
+```bash
 hala nlp --text "مبروك! فزت بجائزة 5000 شيكل، اضغط الرابط"
 # → SCAM (85/100)
-Ethics & Legal
-HALA is a defensive tool only.
+```
 
-✅ We use metadata from public breach disclosures
+---
 
-✅ We query official APIs (HaveIBeenPwned) when keys are provided
+## Ethics & Legal
 
-✅ We generate official opt-out links from data brokers
+HALA is a **defensive tool only**.
 
-❌ We do NOT download leaked data files
+- ✅ We use metadata from public breach disclosures
+- ✅ We query official APIs (HaveIBeenPwned) when keys are provided
+- ✅ We generate official opt-out links from data brokers
+- ❌ We do NOT download leaked data files
+- ❌ We do NOT scrape illegal Telegram bots or Facebook groups
+- ❌ We do NOT store personal data of any individual
 
-❌ We do NOT scrape illegal Telegram bots or Facebook groups
+**Every feature passes the filter:** _"Does this protect Arabic speakers, or harm someone?"_
 
-❌ We do NOT store personal data of any individual
+---
 
-Every feature passes the filter: "Does this protect Arabic speakers, or harm someone?"
+## Roadmap
 
-Roadmap
-☑ hala kashif — phone leak checker
-☑ hala sitr — data opt-out links
-☑ hala athar — Arabic OSINT
-☑ hala sayyad — phishing domain generator
-☑ hala nlp — Arabic scam detection (rule-based)
-□ HALA-NLP — fine-tuned Arabic security LLM
-□ HALA-API — REST API for banks & telecoms
-□ HALA-Graph — threat actor relationship graph
-□ HALA-Honeypot — active scammer tracking
-□ HALA-Vision — Arabic phishing screenshot detection
-Contributing
+- [x] `hala kashif` — phone leak checker
+- [x] `hala sitr` — data opt-out links
+- [x] `hala athar` — Arabic OSINT
+- [x] `hala sayyad` — phishing domain generator
+- [x] `hala nlp` — Arabic scam detection (rule-based)
+- [ ] **HALA-NLP** — fine-tuned Arabic security LLM
+- [ ] **HALA-API** — REST API for banks & telecoms
+- [ ] **HALA-Graph** — threat actor relationship graph
+- [ ] **HALA-Honeypot** — active scammer tracking
+- [ ] **HALA-Vision** — Arabic phishing screenshot detection
+
+---
+
+## Contributing
+
 We welcome contributions from Arabic-speaking security researchers, developers, and OSINT analysts.
 
 Ways to contribute:
 
-Add new Arabic leak metadata (no personal data!)
+- Add new Arabic leak metadata (no personal data!)
+- Improve scam patterns in `scam_patterns.json`
+- Add opt-out URLs for your country
+- Translate the README to more Arabic dialects
+- Report false positives / negatives
 
-Improve scam patterns in scam_patterns.json
+---
 
-Add opt-out URLs for your country
+## License
 
-Translate the README to more Arabic dialects
-
-Report false positives / negatives
-
-License
 MIT © HALA Community
 
-Built in Gaza. For 400+ million Arabic speakers. 🇵🇸
+---
+
+**Built in Gaza. For 400+ million Arabic speakers. 🇵🇸**
