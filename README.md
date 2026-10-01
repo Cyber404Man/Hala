@@ -99,19 +99,18 @@ hala nlp --text "مبروك! فزت بجائزة 5000 شيكل، اضغط الر
 
 ---
 
-## Ethics & Legal
+## Data Sources
 
-HALA is a **defensive tool only**.
+HALA uses 100% free, public APIs:
 
-- ✅ We use metadata from public breach disclosures
-- ✅ We query official APIs (HaveIBeenPwned) when keys are provided
-- ✅ We generate official opt-out links from data brokers
-- ❌ We do NOT download leaked data files
-- ❌ We do NOT scrape illegal Telegram bots or Facebook groups
-- ❌ We do NOT store personal data of any individual
+| Source | Data | Cost |
+|--------|------|------|
+| **XposedOrNot** | Email breaches | Free, no key |
+| **LeakCheck.io** | Email + phone | 100 results/month free |
+| **urlscan.io** | URL scanning | 100 scans/day free |
+| **VirusTotal** | URL + file scanning | 500 req/day free |
 
-**Every feature passes the filter:** _"Does this protect Arabic speakers, or harm someone?"_
-
+**No paid APIs. No hidden costs. No personal data stored.**
 ---
 
 ## Roadmap
