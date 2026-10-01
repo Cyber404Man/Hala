@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "updated": "2025-01-01",
+  "note": "metadata فقط - لا يحتوي أي بيانات شخصية",
+  "leaks": [
+    {"id": "ps-daleel-2023", "source": "ps_daleel",
+     "prefix": "+97059", "date": "2023-08", "records": 120000},
+    {"id": "ye-telecom-2022", "source": "ye_telecom",
+     "prefix": "+9677", "date": "2022-05", "records": 800000},
+    {"id": "eg-delivery-2024", "source": "eg_delivery",
+     "prefix": "+201", "date": "2024-02", "records": 450000},
+    {"id": "sa-telecom-2021", "source": "sa_telecom",
+     "prefix": "+9665", "date": "2021-11", "records": 600000},
+    {"id": "jo-telecom-2023", "source": "jo_telecom",
+     "prefix": "+9627", "date": "2023-06", "records": 300000}
+  ]
+}
