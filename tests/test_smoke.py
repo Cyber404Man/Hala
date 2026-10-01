@@ -45,3 +45,38 @@ def test_kashif_invalid():
     """رقم غلط → exit code 2"""
     r = CliRunner().invoke(main, ["kashif", "abc"])
     assert r.exit_code == 2
+
+def test_nlp_dialect_ps():
+    """كشف اللهجة الفلسطينية"""
+    from hala.commands.nlp import analyze
+    r = analyze("كيفك يا زلمة، شو هسا هاد؟")
+    dialects = [d[0] for d in r["dialects"]]
+    assert "ps" in dialects or "jo" in dialects or "sy" in dialects
+
+
+def test_nlp_extract_urls():
+    """استخراج الروابط"""
+    from hala.commands.nlp import analyze
+    r = analyze("اضغط على https://bit.ly/abc123 لاستلام الجائزة")
+    assert any("bit.ly" in u for u in r["urls"])
+
+
+def test_nlp_extract_phones():
+    """استخراج الأرقام"""
+    from hala.commands.nlp import analyze
+    r = analyze("اتصل فيني على 0599123456")
+    assert len(r["phones"]) > 0
+
+
+def test_nlp_personal_info():
+    """طلب رقم البطاقة = SCAM"""
+    from hala.commands.nlp import analyze
+    r = analyze("أرسل رقم البطاقة و CVV لتأكيد الحساب")
+    assert r["verdict"] == "SCAM"
+
+
+def test_nlp_crypto():
+    """احتيال crypto"""
+    from hala.commands.nlp import analyze
+    r = analyze("احصل على USDT مجاني من airdrop")
+    assert r["verdict"] in ("SCAM", "SUSPICIOUS")
