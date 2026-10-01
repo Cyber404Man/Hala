@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "updated": "2025-01-01",
+  "note": "روابط رسمية لحذف البيانات من مواقع عربية وعالمية",
+  "sites": [
+    {
+      "name": "TrueCaller",
+      "desc": "إزالة رقمك من دليل TrueCaller العالمي",
+      "url": "https://www.truecaller.com/unlisting",
+      "countries": ["PS", "SA", "EG", "YE", "JO", "AE", "ALL"]
+    },
+    {
+      "name": "Sync.ME",
+      "desc": "حذف بياناتك من Sync.ME",
+      "url": "https://sync.me/optout/",
+      "countries": ["ALL"]
+    },
+    {
+      "name": "NumberBook",
+      "desc": "إزالة رقمك من NumberBook",
+      "url": "https://www.numberbook.com/remove",
+      "countries": ["ALL"]
+    },
+    {
+      "name": "Daleel.ps",
+      "desc": "دليل فلسطين - طلب حذف",
+      "url": "https://daleel.ps/contact",
+      "countries": ["PS"]
+    },
+    {
+      "name": "YellowPages SA",
+      "desc": "الصفحات الصفراء السعودية",
+      "url": "https://www.yellowpages.com.sa/remove",
+      "countries": ["SA"]
+    },
+    {
+      "name": "Hatla2ee",
+      "desc": "حذف بياناتك من Hatla2ee (مصر)",
+      "url": "https://www.hatla2ee.com/ar/contact",
+      "countries": ["EG"]
+    },
+    {
+      "name": "OpenSooq",
+      "desc": "إزالة بياناتك من السوق المفتوح",
+      "url": "https://www.opensooq.com/ar/contact-us",
+      "countries": ["JO", "SA", "AE", "ALL"]
+    },
+    {
+      "name": "Google Results",
+      "desc": "إزالة نتائج البحث عن رقمك من Google",
+      "url": "https://support.google.com/websearch/troubleshooter/9685456",
+      "countries": ["ALL"]
+    },
+    {
+      "name": "Facebook Search",
+      "desc": "منع ظهور رقمك في بحث فيسبوك",
+      "url": "https://www.facebook.com/settings?tab=privacy",
+      "countries": ["ALL"]
+    },
+    {
+      "name": "HaveIBeenPwned",
+      "desc": "اعرف إذا ايميلك مسرّب",
+      "url": "https://haveibeenpwned.com/",
+      "countries": ["ALL"]
+    }
+  ]
+}

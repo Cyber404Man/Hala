@@ -28,7 +28,10 @@ def main(ctx):
         console.print(ctx.get_help())
 
 from hala.commands import kashif
+from hala.commands import sitr  # noqa: E402
+
 main.add_command(kashif.kashif)
+main.add_command(sitr.sitr)
 
 if __name__ == "__main__":
     main()
