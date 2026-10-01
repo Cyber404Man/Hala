@@ -29,7 +29,9 @@ def main(ctx):
 
 from hala.commands import kashif
 from hala.commands import sitr  # noqa: E402
+from hala.commands import athar  # noqa: E402
 
+main.add_command(athar.athar)
 main.add_command(kashif.kashif)
 main.add_command(sitr.sitr)
 
