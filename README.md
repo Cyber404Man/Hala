@@ -40,7 +40,7 @@ Meanwhile, **400+ million Arabic speakers** face:
 
 ## Installation
 
-From PyPI (coming soon):
+From PyPI :
 
 ```bash
 pip install hala-arab
