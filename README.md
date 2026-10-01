@@ -1,4 +1,4 @@
-# HALA · هالة
+# HALA 
 
 > **Hunting Arab Leaks & Assets**
 > The first open-source CLI for Arabic-language threat intelligence.
