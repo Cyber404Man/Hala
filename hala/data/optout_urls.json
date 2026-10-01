@@ -1,67 +1,30 @@
 {
-  "version": "0.1.0",
-  "updated": "2025-01-01",
+  "version": "0.2.0",
   "note": "روابط رسمية لحذف البيانات من مواقع عربية وعالمية",
   "sites": [
-    {
-      "name": "TrueCaller",
-      "desc": "إزالة رقمك من دليل TrueCaller العالمي",
-      "url": "https://www.truecaller.com/unlisting",
-      "countries": ["PS", "SA", "EG", "YE", "JO", "AE", "ALL"]
-    },
-    {
-      "name": "Sync.ME",
-      "desc": "حذف بياناتك من Sync.ME",
-      "url": "https://sync.me/optout/",
-      "countries": ["ALL"]
-    },
-    {
-      "name": "NumberBook",
-      "desc": "إزالة رقمك من NumberBook",
-      "url": "https://www.numberbook.com/remove",
-      "countries": ["ALL"]
-    },
-    {
-      "name": "Daleel.ps",
-      "desc": "دليل فلسطين - طلب حذف",
-      "url": "https://daleel.ps/contact",
-      "countries": ["PS"]
-    },
-    {
-      "name": "YellowPages SA",
-      "desc": "الصفحات الصفراء السعودية",
-      "url": "https://www.yellowpages.com.sa/remove",
-      "countries": ["SA"]
-    },
-    {
-      "name": "Hatla2ee",
-      "desc": "حذف بياناتك من Hatla2ee (مصر)",
-      "url": "https://www.hatla2ee.com/ar/contact",
-      "countries": ["EG"]
-    },
-    {
-      "name": "OpenSooq",
-      "desc": "إزالة بياناتك من السوق المفتوح",
-      "url": "https://www.opensooq.com/ar/contact-us",
-      "countries": ["JO", "SA", "AE", "ALL"]
-    },
-    {
-      "name": "Google Results",
-      "desc": "إزالة نتائج البحث عن رقمك من Google",
-      "url": "https://support.google.com/websearch/troubleshooter/9685456",
-      "countries": ["ALL"]
-    },
-    {
-      "name": "Facebook Search",
-      "desc": "منع ظهور رقمك في بحث فيسبوك",
-      "url": "https://www.facebook.com/settings?tab=privacy",
-      "countries": ["ALL"]
-    },
-    {
-      "name": "HaveIBeenPwned",
-      "desc": "اعرف إذا ايميلك مسرّب",
-      "url": "https://haveibeenpwned.com/",
-      "countries": ["ALL"]
-    }
+    {"id": "truecaller", "name": "TrueCaller", "desc": "دليل أرقام عالمي", "url": "https://www.truecaller.com/unlisting", "countries": ["ALL"], "type": "people_search", "difficulty": "easy"},
+    {"id": "syncme", "name": "Sync.ME", "desc": "مزامنة جهات الاتصال", "url": "https://sync.me/optout/", "countries": ["ALL"], "type": "people_search", "difficulty": "easy"},
+    {"id": "numberbook", "name": "NumberBook", "desc": "دليل أرقام", "url": "https://www.numberbook.com/remove", "countries": ["ALL"], "type": "people_search", "difficulty": "easy"},
+    {"id": "daleel_ps", "name": "Daleel.ps", "desc": "دليل فلسطين", "url": "https://daleel.ps/contact", "countries": ["PS"], "type": "people_search", "difficulty": "medium"},
+    {"id": "yellowpages_sa", "name": "YellowPages SA", "desc": "الصفحات الصفراء السعودية", "url": "https://www.yellowpages.com.sa/remove", "countries": ["SA"], "type": "people_search", "difficulty": "medium"},
+    {"id": "hatla2ee", "name": "Hatla2ee", "desc": "سوق سيارات مصري", "url": "https://www.hatla2ee.com/ar/contact", "countries": ["EG"], "type": "marketplace", "difficulty": "medium"},
+    {"id": "opensooq", "name": "OpenSooq", "desc": "السوق المفتوح", "url": "https://www.opensooq.com/ar/contact-us", "countries": ["JO","SA","AE","ALL"], "type": "marketplace", "difficulty": "medium"},
+    {"id": "dubizzle", "name": "Dubizzle", "desc": "سوق إعلانات إماراتي", "url": "https://www.dubizzle.com/privacy/", "countries": ["AE"], "type": "marketplace", "difficulty": "medium"},
+    {"id": "haraj", "name": "Haraj", "desc": "موقع حراج سعودي", "url": "https://haraj.com.sa/contact", "countries": ["SA"], "type": "marketplace", "difficulty": "medium"},
+    {"id": "olx_eg", "name": "OLX Egypt", "desc": "إعلانات مبوبة مصر", "url": "https://www.olx.com.eg/contact", "countries": ["EG"], "type": "marketplace", "difficulty": "medium"},
+    {"id": "google", "name": "Google Results", "desc": "إزالة نتائج البحث", "url": "https://support.google.com/websearch/troubleshooter/9685456", "countries": ["ALL"], "type": "search_engine", "difficulty": "hard"},
+    {"id": "bing", "name": "Bing", "desc": "إزالة من بحث Bing", "url": "https://www.bing.com/webmasters/tools/contentremoval", "countries": ["ALL"], "type": "search_engine", "difficulty": "hard"},
+    {"id": "facebook", "name": "Facebook Privacy", "desc": "منع بحث فيسبوك", "url": "https://www.facebook.com/settings?tab=privacy", "countries": ["ALL"], "type": "social", "difficulty": "easy"},
+    {"id": "instagram", "name": "Instagram Privacy", "desc": "إعدادات خصوصية انستغرام", "url": "https://www.instagram.com/accounts/privacy_and_security/", "countries": ["ALL"], "type": "social", "difficulty": "easy"},
+    {"id": "twitter", "name": "Twitter/X Privacy", "desc": "إعدادات خصوصية تويتر", "url": "https://twitter.com/settings/privacy_and_safety", "countries": ["ALL"], "type": "social", "difficulty": "easy"},
+    {"id": "linkedin", "name": "LinkedIn Privacy", "desc": "إعدادات لينكدإن", "url": "https://www.linkedin.com/psettings/privacy", "countries": ["ALL"], "type": "social", "difficulty": "easy"},
+    {"id": "spokeo", "name": "Spokeo", "desc": "دليل أمريكي", "url": "https://www.spokeo.com/optout", "countries": ["ALL"], "type": "people_search", "difficulty": "medium"},
+    {"id": "whitepages", "name": "WhitePages", "desc": "دليل هواتف", "url": "https://www.whitepages.com/suppression_requests", "countries": ["ALL"], "type": "people_search", "difficulty": "medium"},
+    {"id": "beenverified", "name": "BeenVerified", "desc": "بحث عن الأشخاص", "url": "https://www.beenverified.com/app/optout/search", "countries": ["ALL"], "type": "people_search", "difficulty": "medium"},
+    {"id": "intelius", "name": "Intelius", "desc": "بحث عن الأشخاص", "url": "https://www.intelius.com/opt-out/", "countries": ["ALL"], "type": "people_search", "difficulty": "medium"},
+    {"id": "acxiom", "name": "Acxiom", "desc": "شركة تسويق بيانات", "url": "https://isapps.acxiom.com/optout/optout.aspx", "countries": ["ALL"], "type": "marketing", "difficulty": "hard"},
+    {"id": "oracle_datalogix", "name": "Oracle Data Cloud", "desc": "بيانات تسويق", "url": "https://datacloudoptout.oracle.com/", "countries": ["ALL"], "type": "marketing", "difficulty": "hard"},
+    {"id": "hibp", "name": "HaveIBeenPwned", "desc": "فحص تسريب الإيميل", "url": "https://haveibeenpwned.com/", "countries": ["ALL"], "type": "breach_check", "difficulty": "easy"},
+    {"id": "xposedornot", "name": "XposedOrNot", "desc": "فحص تسريبات مجاني", "url": "https://xposedornot.com/", "countries": ["ALL"], "type": "breach_check", "difficulty": "easy"}
   ]
 }

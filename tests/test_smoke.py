@@ -80,3 +80,22 @@ def test_nlp_crypto():
     from hala.commands.nlp import analyze
     r = analyze("احصل على USDT مجاني من airdrop")
     assert r["verdict"] in ("SCAM", "SUSPICIOUS")
+
+
+def test_sitr_state_persistence(tmp_path, monkeypatch):
+    from hala import utils
+
+    state_dir = tmp_path / ".hala"
+    monkeypatch.setattr(utils, "STATE_DIR", state_dir)
+    monkeypatch.setattr(utils, "STATE_FILE", state_dir / "sitr_state.json")
+
+    assert utils.load_state() == {"completed": [], "notes": {}}
+    utils.mark_completed("truecaller")
+    assert utils.load_state()["completed"] == ["truecaller"]
+
+    utils.mark_pending("truecaller")
+    assert utils.load_state()["completed"] == []
+
+    utils.mark_completed("google")
+    utils.reset_state()
+    assert utils.load_state() == {"completed": [], "notes": {}}
