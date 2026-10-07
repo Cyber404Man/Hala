@@ -5,8 +5,8 @@ import httpx
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-
-from hala.sources import urlscan
+from hala.sources import urlscan, virustotal
+from hala.commands.config import get_key
 
 console = Console()
 
@@ -83,7 +83,11 @@ async def check_all_dns(domains: list[str]) -> dict[str, bool]:
               help="افحص النطاقات المسجّلة في urlscan")
 @click.option("--urlscan-key", envvar="URLSCAN_API_KEY", default=None,
               help="مفتاح urlscan.io")
-def sayyad(brand, dialect, top, suspicious_only, check_dns, do_scan, urlscan_key):
+@click.option("--vt-scan", is_flag=True,
+              help="افحص النطاقات في VirusTotal")
+def sayyad(
+    brand, dialect, top, suspicious_only, check_dns, do_scan, urlscan_key, vt_scan
+):
     """صياد — يولّد ويفحص نطاقات تصيّد محتملة على براند عربي."""
     variants = generate_variants(brand)
 
@@ -174,3 +178,46 @@ def sayyad(brand, dialect, top, suspicious_only, check_dns, do_scan, urlscan_key
         console.print(scan_table)
         console.print(f"\n[red]⚠ {len(found_scans)} نطاق نشط![/red]")
         console.print("[dim]راجعهم يدويًا في urlscan.io[/dim]")
+
+    # VirusTotal
+    if vt_scan:
+        vt_key = get_key("virustotal_key")
+        if not vt_key:
+            console.print("\n[yellow]⚠ تحتاج مفتاح VirusTotal[/yellow]")
+            console.print("[dim]احصل عليه: "
+                          "https://www.virustotal.com/gui/join-us[/dim]")
+            console.print("[dim]ثم: hala config --set virustotal_key KEY[/dim]")
+        else:
+            live_domains = [d for d, found in dns_results.items() if found]
+            if live_domains:
+                console.print(
+                    f"\n[dim]🔍 نفحص {len(live_domains)} نطاق في VirusTotal...[/dim]"
+                )
+                vt_results = []
+                for domain in live_domains[:10]:  # أول 10 بس
+                    try:
+                        r = asyncio.run(virustotal.check_domain(domain, vt_key))
+                        if r and (r["malicious"] > 0 or r["suspicious"] > 0):
+                            vt_results.append(r)
+                    except virustotal.VirusTotalError as e:
+                        console.print(f"[dim]⚠ VT: {e}[/dim]")
+                        break
+
+                if vt_results:
+                    vt_table = Table(title="⚠ نطاقات مشبوهة في VirusTotal",
+                                     show_lines=True)
+                    vt_table.add_column("Domain", style="red")
+                    vt_table.add_column("Malicious", style="red")
+                    vt_table.add_column("Suspicious", style="yellow")
+                    vt_table.add_column("Reputation")
+
+                    for r in vt_results:
+                        vt_table.add_row(
+                            r["domain"],
+                            str(r["malicious"]),
+                            str(r["suspicious"]),
+                            str(r["reputation"]),
+                        )
+                    console.print(vt_table)
+                else:
+                    console.print("[green]✓ ما لقينا نطاقات مشبوهة في VT.[/green]")

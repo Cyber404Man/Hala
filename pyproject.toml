@@ -1,6 +1,6 @@
 [project]
 name = "hala-arab"
-version = "0.2.0"
+version = "0.4.0"
 description = "HALA - Hunting Arab Leaks & Assets | أول إطار عربي مفتوح المصدر لاستخبارات التهديدات"
 readme = "README.md"
 requires-python = ">=3.9"

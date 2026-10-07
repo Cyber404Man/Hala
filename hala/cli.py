@@ -30,7 +30,8 @@ def main(ctx):
 from hala.commands import kashif
 from hala.commands import sitr  # noqa: E402
 from hala.commands import athar, sayyad, nlp  # noqa: E402
-
+from hala.commands import config  # noqa: E402
+main.add_command(config.config)
 main.add_command(athar.athar)
 main.add_command(kashif.kashif)
 main.add_command(sitr.sitr)

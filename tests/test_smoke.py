@@ -46,6 +46,19 @@ def test_kashif_invalid():
     r = CliRunner().invoke(main, ["kashif", "abc"])
     assert r.exit_code == 2
 
+
+def test_sayyad_vt_scan_option(monkeypatch):
+    from hala.commands import sayyad
+
+    monkeypatch.setattr(sayyad, "get_key", lambda _: None)
+    r = CliRunner().invoke(
+        main,
+        ["sayyad", "--brand", "jawwal", "--top", "1", "--vt-scan"],
+    )
+    assert r.exit_code == 0
+    assert "تحتاج مفتاح VirusTotal" in r.output
+
+
 def test_nlp_dialect_ps():
     """كشف اللهجة الفلسطينية"""
     from hala.commands.nlp import analyze
